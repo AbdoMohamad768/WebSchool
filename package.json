@@ -1,0 +1,15 @@
+{
+  "name": "webschool",
+  "version": "1.0.0",
+  "description": "Web School Templete",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "Abdo Mohamad",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
