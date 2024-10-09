@@ -9,8 +9,13 @@
 /* End Variable */
 
 
-
-
+.section {
+  transform: translateY(20%);
+  opacity: 0;
+}
+.transition {
+  transition: 0.8s;
+}
 
 /* Start Global Rules */
 * {
@@ -1078,6 +1083,7 @@ header .container > ul li:last-child .mega-menu ul li a i {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
 }
 
 .skills .skills-meters .meter-box .skill {
@@ -1101,6 +1107,7 @@ header .container > ul li:last-child .mega-menu ul li a i {
   width: 100%;
   height: 30px;
   background-color: #eee;
+  transition: 1s linear;
 }
 
 .skills .skills-meters .meter-box .meter span {
@@ -1109,8 +1116,9 @@ header .container > ul li:last-child .mega-menu ul li a i {
   left: 0;
   top: 0;
   background-color: var(--main-color);
+  width: 0;
   height: 100%;
-  transition: width var(--main-transition) linear;
+  transition: 1s linear;
 }
 /* End Skills */
 
@@ -1252,7 +1260,7 @@ header .container > ul li:last-child .mega-menu ul li a i {
 .events .main .info .timer div {
   border: 1px solid #ccc;
   border-radius: 5px;
-  max-width: 75px;
+  min-width: 75px;
   transition: var(--main-transition);
 }
 
