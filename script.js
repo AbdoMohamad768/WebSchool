@@ -30,32 +30,31 @@ const goToIn = function (To = 0, In, counter) {
 const observeSections = new IntersectionObserver(
   (entries, observeSections) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove("section");
+      if (!entry.isIntersecting) return;
 
-        if (entry.target.classList.contains("stats")) {
-          const counter1 = setInterval(
-            () => goToIn(150, stat_lable_clients, counter1),
-            10
-          );
-          const counter2 = setInterval(
-            () => goToIn(135, stat_lable_projects, counter2),
-            10
-          );
-          const counter3 = setInterval(
-            () => goToIn(50, stat_lable_countries, counter3),
-            40
-          );
-          const counter4 = setInterval(
-            () => goToIn(500, stat_lable_money, counter4),
-            1
-          );
-          // goToIn(150, stat_lable_clients);
-          // goToIn(135, stat_lable_projects);
-          // goToIn(50, stat_lable_countries);
-          // goToIn(500, stat_lable_money);
-        }
+      console.log("Section Observer");
+      entry.target.classList.remove("section");
+
+      if (entry.target.classList.contains("stats")) {
+        const counter1 = setInterval(
+          () => goToIn(150, stat_lable_clients, counter1),
+          10
+        );
+        const counter2 = setInterval(
+          () => goToIn(135, stat_lable_projects, counter2),
+          10
+        );
+        const counter3 = setInterval(
+          () => goToIn(50, stat_lable_countries, counter3),
+          40
+        );
+        const counter4 = setInterval(
+          () => goToIn(500, stat_lable_money, counter4),
+          1
+        );
       }
+
+      observeSections.unobserve(entry.target);
     });
   },
   {
@@ -70,10 +69,12 @@ sections.forEach((section) => {
 // Meters Increasing on Scroll
 const observeMeters = new IntersectionObserver((entries, observeMeters) => {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const meterWidth = entry.target.dataset.width;
-      entry.target.style.width = meterWidth;
-    }
+    if (!entry.isIntersecting) return;
+
+    const meterWidth = entry.target.dataset.width;
+    entry.target.style.width = meterWidth;
+
+    observeMeters.unobserve(entry.target);
   });
 });
 skills_meters.forEach((meter) => {
@@ -104,13 +105,3 @@ const tick = function () {
 const timer = setInterval(() => {
   tick();
 }, 1000);
-
-// Stats Counting Up
-// const observeStats = new IntersectionObserver((entries, observeStats) => {
-//   entries.forEach((entry) => {
-//     if (entry.isIntersecting) {
-//       console.log(sec_stats, stat_lables);
-//     }
-//   });
-// });
-// observeStats.observe(sec_stats);
