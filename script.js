@@ -32,7 +32,6 @@ const observeSections = new IntersectionObserver(
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
 
-      console.log("Section Observer");
       entry.target.classList.remove("section");
 
       if (entry.target.classList.contains("stats")) {
